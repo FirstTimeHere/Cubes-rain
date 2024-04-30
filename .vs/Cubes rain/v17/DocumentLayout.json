@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "E:\\GitHub\\Cubes rain\\Cubes rain\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|e:\\github\\cubes rain\\cubes rain\\assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\planecolission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\planecolission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Cube.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Cube.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Cube.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Cube.cs",
               "RelativeToolTip": "Assets\\Scripts\\Cube.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T16:40:55.84Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Spawner.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Spawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Spawner.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Spawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\Spawner.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA0AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T16:40:57.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlaneColission.cs",
-              "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\PlaneColission.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlaneColission.cs",
-              "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\PlaneColission.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlaneColission.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "Platform.cs",
+              "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Platform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Platform.cs",
+              "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Platform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Platform.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-28T16:40:57.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-28T16:40:57.268Z"
             }
           ]
         }

@@ -643,7 +643,9 @@ MonoBehaviour:
   - {fileID: 1985828751}
   - {fileID: 1229829468}
   _cube: {fileID: 1738378164119006353, guid: 50ce413850a7e3041aed55e0442d158e, type: 3}
+  _platform: {fileID: 1680528136}
   _waitTime: 0.2
+  _numbersOfCubes: 30
 --- !u!1 &2029365448
 GameObject:
   m_ObjectHideFlags: 0
