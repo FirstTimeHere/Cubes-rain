@@ -1,62 +1,60 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Platform))]
 
 public class Cube : MonoBehaviour
 {
-    private Platform _platform;
-
     private bool _isColorChanged;
 
     private float _lifeTimer;
+
+    private SpawnerBombs _spawnerBomb;
+
+    private WaitForSeconds _wait;
 
     private void Awake()
     {
         gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (_lifeTimer <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == _platform.gameObject)
+        if (collision.collider.TryGetComponent(out Platform platform))
         {
             if (_isColorChanged == false)
             {
                 _isColorChanged = true;
-                gameObject.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                gameObject.GetComponent<MeshRenderer>().material.color = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
             }
 
             StartCoroutine(GetLifeTime(_lifeTimer));
         }
     }
+
     private IEnumerator GetLifeTime(float delay)
     {
-        var wait = new WaitForSecondsRealtime(delay);
+        _wait = new WaitForSeconds(delay);
 
         while (_lifeTimer > 0)
         {
             _lifeTimer--;
 
-            yield return wait;
+            yield return _wait;
         }
+
+        _spawnerBomb.CreateBomb(transform);
+        gameObject.SetActive(false);
+    }
+
+    public void GetSpawner(SpawnerBombs spawner)
+    {
+        _spawnerBomb = spawner;
     }
 
     public void ChangeLifeTimer(int time)
     {
         _lifeTimer = time;
-    }
-
-    public void GetPlatform(Platform plane)
-    {
-        _platform = plane;
     }
 }
