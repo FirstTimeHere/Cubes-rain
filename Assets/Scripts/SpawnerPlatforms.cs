@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnerPlatforms : Spawner<Platform>
 {
-    [SerializeField] private List<Platform> _platdorms;
+    [SerializeField] private List<Platform> _platforms;
     [SerializeField] private List<Transform> _spawnPointsPlatform;
 
     [SerializeField] private Platform _basePlatform;
@@ -28,14 +28,14 @@ public class SpawnerPlatforms : Spawner<Platform>
         Prefab = _basePlatform;
         Create();
 
-        for (int i = 0; i < _platdorms.Count; i++)
+        for (int i = 0; i < _platforms.Count; i++)
         {
-            int randomsSpawnPoin = Random.Range(0, tempSpawnPoints.Count);
+            int randomsSpawnPoint = Random.Range(0, tempSpawnPoints.Count);
 
-            _platdorms[i].transform.position = tempSpawnPoints[randomsSpawnPoin].transform.position;
-            tempSpawnPoints.RemoveAt(randomsSpawnPoin);
+            _platforms[i].transform.position = tempSpawnPoints[randomsSpawnPoint].transform.position;
+            tempSpawnPoints.RemoveAt(randomsSpawnPoint);
 
-            Prefab = _platdorms[i];
+            Prefab = _platforms[i];
             Create();
         }
     }

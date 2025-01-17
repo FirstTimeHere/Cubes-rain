@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float _explosionForce;
 
     private int _lifeTimer = 0;
+    private int _lifeTimerForColor = 0;
 
     private WaitForSecondsRealtime _wait;
 
@@ -18,13 +19,17 @@ public class Bomb : MonoBehaviour
     private void Awake()
     {
         _lifeTimer = RandomLifeTimer();
+        _lifeTimerForColor = _lifeTimer;
         _material = GetComponent<Renderer>().material;
         _color = _material.color;
+        _color.a = 1f;
+        _material.color = _color;
     }
 
     private void Start()
     {
         StartCoroutine(GetLifeTime(_lifeTimer));
+        StartCoroutine(GetAlphaChange());
     }
 
     private void Explode()
@@ -61,14 +66,32 @@ public class Bomb : MonoBehaviour
         while (_lifeTimer > 0)
         {
             _lifeTimer--;
-
-            _color.a = Mathf.Lerp(0f, 1f, _lifeTimer * Time.deltaTime);
-            _material.color = _color;
-
             yield return _wait;
         }
 
         Explode();
+    }
+
+    private IEnumerator GetAlphaChange()
+    {
+        float startAlpha = _material.color.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < _lifeTimerForColor)
+        {
+            float currentAlpha = Mathf.Lerp(startAlpha, 0f, elapsedTime / _lifeTimerForColor);
+            ChangeAlpha(currentAlpha);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
+    private void ChangeAlpha(float alpha)
+    {
+        _color.a = alpha;
+        _material.color = _color;
     }
 
     private int RandomLifeTimer()
