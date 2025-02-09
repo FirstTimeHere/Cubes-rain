@@ -951,7 +951,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1998762765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91e7151926c61a41b2158036497ffc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b7a70a35324471418697dd1e654ef79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _platforms:
@@ -965,6 +965,7 @@ MonoBehaviour:
   - {fileID: 555657386}
   - {fileID: 870259576}
   _basePlatform: {fileID: 6429388793618599430, guid: bb88a9ab2275d34469b96034a61d3842, type: 3}
+  _invisiblePlatform: {fileID: 1358416024293911103, guid: 0beab96d989304b41baf13c4f7ac1da9, type: 3}
   _spawnPointBasePlatform: {fileID: 295362702}
 --- !u!1 &2029365448
 GameObject:
@@ -1014,12 +1015,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2029365448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4a236577721904c853d97e739334b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 64915deb28462204291f538645d88072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cube: {fileID: 1738378164119006353, guid: 50ce413850a7e3041aed55e0442d158e, type: 3}
-  _waitTime: 0.1
-  _numbersOfCubes: 25
+  _waitTime: 3
+  _numbersOfCubes: 30
   _spawnPoints:
   - {fileID: 1161981926}
   - {fileID: 1505731196}
@@ -1040,6 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bomb: {fileID: 6781326656689881142, guid: 3875cb8bd72410a42a96799073badf59, type: 3}
+  _spawnerCube: {fileID: 2029365450}
 --- !u!1 &2102880464
 GameObject:
   m_ObjectHideFlags: 0

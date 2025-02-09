@@ -6,17 +6,27 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    private bool _isColorChanged;
+    private bool _isColorChanged = true;
 
     private float _lifeTimer;
 
-    private SpawnerBombs _spawnerBomb;
+    private SpawnerCube _spawner;
 
     private WaitForSeconds _wait;
 
-    private void Awake()
+    public void ReturnColor()
     {
-        gameObject.SetActive(false);
+        _isColorChanged = !_isColorChanged;
+    }
+
+    public void GetSpawner(SpawnerCube spawner)
+    {
+        _spawner = spawner;
+    }
+
+    public void ChangeLifeTimer(int time)
+    {
+        _lifeTimer = time;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,7 +36,7 @@ public class Cube : MonoBehaviour
             if (_isColorChanged == false)
             {
                 _isColorChanged = true;
-                gameObject.GetComponent<MeshRenderer>().material.color = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                platform.GetNewColorCube(this);
             }
 
             StartCoroutine(GetLifeTime(_lifeTimer));
@@ -44,17 +54,6 @@ public class Cube : MonoBehaviour
             yield return _wait;
         }
 
-        _spawnerBomb.CreateBomb(transform);
-        gameObject.SetActive(false);
-    }
-
-    public void GetSpawner(SpawnerBombs spawner)
-    {
-        _spawnerBomb = spawner;
-    }
-
-    public void ChangeLifeTimer(int time)
-    {
-        _lifeTimer = time;
+        _spawner.ReleaseObjectPool(this);
     }
 }

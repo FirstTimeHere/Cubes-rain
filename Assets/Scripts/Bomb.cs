@@ -6,23 +6,21 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
 
-    private int _lifeTimer = 0;
-    private int _lifeTimerForColor = 0;
+    private int _lifeTimer;
+    private int _lifeTimerForColor;
 
     private WaitForSecondsRealtime _wait;
 
     private Material _material;
 
-    private Color _color;
+    private SpawnerBomb _spawner;
 
+    private Color _color;
 
     private void Awake()
     {
-        _lifeTimer = RandomLifeTimer();
-        _lifeTimerForColor = _lifeTimer;
         _material = GetComponent<Renderer>().material;
         _color = _material.color;
-        _color.a = 1f;
         _material.color = _color;
     }
 
@@ -32,6 +30,22 @@ public class Bomb : MonoBehaviour
         StartCoroutine(GetAlphaChange());
     }
 
+    public void ChangeLifeTimer(int time)
+    {
+        _lifeTimer = time;
+        _lifeTimerForColor = time;
+    }
+
+    public void GetSpawner(SpawnerBomb spawner)
+    {
+        _spawner = spawner;
+    }
+
+    public void ReturnDefaultAlpha()
+    {
+        _color.a = 1f;
+    }
+
     private void Explode()
     {
         foreach (Rigidbody hit in GetExlodableObjects())
@@ -39,7 +53,7 @@ public class Bomb : MonoBehaviour
             hit.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
 
-        Destroy(gameObject);
+        _spawner.ReleaseObjectPool(this);
     }
 
     private List<Rigidbody> GetExlodableObjects()
@@ -92,13 +106,5 @@ public class Bomb : MonoBehaviour
     {
         _color.a = alpha;
         _material.color = _color;
-    }
-
-    private int RandomLifeTimer()
-    {
-        int minRandom = 2;
-        int maxRandom = 5;
-
-        return Random.Range(minRandom, maxRandom);
     }
 }

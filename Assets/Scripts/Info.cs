@@ -1,13 +1,11 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Info : MonoBehaviour
 {
-    [SerializeField] private SpawnerCubs _spawnerCubs;
-    [SerializeField] private SpawnerBombs _spawnerBomb;
-    [SerializeField] private SpawnerPlatforms _spawnerPlatforms;
+    [SerializeField] private SpawnerCube _spawnerCubs;
+    [SerializeField] private SpawnerBomb _spawnerBomb;
+    [SerializeField] private SpawnerPlatform _spawnerPlatforms;
 
     [SerializeField] private TextMeshProUGUI _text;
 
@@ -16,18 +14,23 @@ public class Info : MonoBehaviour
         GetSettingsText();
     }
 
-    private void OnEnable()
-    {
-        _spawnerCubs.Created += GetText;
-        _spawnerBomb.Created += GetText;
-        _spawnerPlatforms.Created += GetText;
-    }
+    //private void OnEnable()
+    //{
+    //    _spawnerCubs.Created += GetText;
+    //    _spawnerBomb.Created += GetText;
+    //    _spawnerPlatforms.Created += GetText;
+    //}
 
-    private void OnDisable()
+    //private void OnDisable()
+    //{
+    //    _spawnerCubs.Created -= GetText;
+    //    _spawnerBomb.Created -= GetText;
+    //    _spawnerPlatforms.Created -= GetText;
+    //}
+
+    private void Update()
     {
-        _spawnerCubs.Created -= GetText;
-        _spawnerBomb.Created -= GetText;
-        _spawnerPlatforms.Created -= GetText;
+        GetText();
     }
 
     private void GetSettingsText()
@@ -39,10 +42,11 @@ public class Info : MonoBehaviour
 
     private void GetText()
     {
-        int sum = _spawnerCubs.AllObjecctsCreate + _spawnerBomb.AllObjecctsCreate + _spawnerPlatforms.AllObjecctsCreate;
-        _text.text = $"Всего объектов: {sum}\n" +
-            $"Кубов: {_spawnerCubs.AllObjecctsCreate}\n" +
-            $"Платформ: {_spawnerPlatforms.AllObjecctsCreate}\n" +
-            $"Бомб: {_spawnerBomb.AllObjecctsCreate} \n";
+        _text.text = $"Всего кубов: {_spawnerCubs.AllObjects}\n" +
+            $"Активных: {_spawnerCubs.ActiveObjects}\n" +
+            $"Неактивных: {_spawnerCubs.InactiveObjects}\n" +
+            $"Всего бомб: {_spawnerBomb.AllObjects}\n" +
+            $"Активных: {_spawnerBomb.ActiveObjects}\n" +
+            $"Неактивных: {_spawnerBomb.InactiveObjects}\n";
     }
 }
