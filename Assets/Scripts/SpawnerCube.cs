@@ -13,7 +13,7 @@ public class SpawnerCube : Spawner<Cube>
 
     [SerializeField] private List<Transform> _spawnPoints;
 
-    private CustomObjectPool _pool;
+    private CustomObjectPool<Cube> _pool;
 
     private WaitForSeconds _wait;
 
@@ -23,7 +23,7 @@ public class SpawnerCube : Spawner<Cube>
     {
         _wait = new WaitForSeconds(_waitTime);
 
-        _pool = new CustomObjectPool(_cube, _numbersOfCubes);
+        _pool = new CustomObjectPool<Cube>(_cube, _numbersOfCubes);
     }
 
     private void Start()
@@ -33,9 +33,9 @@ public class SpawnerCube : Spawner<Cube>
 
     private void Update()
     {
-        AllObjects = _pool.ShowCountAllCubes();
-        ActiveObjects = _pool.ShowCountActiveCubes();
-        InactiveObjects = _pool.ShowCountInactiveCubes();
+        AllObjects = _pool.ShowCountAllObjects();
+        ActiveObjects = _pool.ShowCountActiveObjects();
+        InactiveObjects = _pool.ShowCountInactiveObjects();
     }
 
     public void ReleaseObjectPool(Cube cube)
@@ -44,11 +44,30 @@ public class SpawnerCube : Spawner<Cube>
         RelesedCube?.Invoke(cube.transform);
     }
 
+    public override void Spawn(Cube @object)
+    {
+        int randomTime = RandomTime();
+        int spawnRandom = Random.Range(0, _spawnPoints.Count);
+
+        var tempSpawnPoint = _spawnPoints[spawnRandom];
+
+        @object.GetSpawner(this);
+
+        @object.GetComponent<MeshRenderer>().material.color = Color.white;
+
+        @object.ReturnColor();
+
+        @object.transform.position = tempSpawnPoint.position;
+
+        @object.ChangeLifeTimer(randomTime);
+    }
+
+
     private IEnumerator GetCubes()
     {
         while (enabled)
         {
-            _pool.GetCube(_spawnPoints, this);
+            _pool.GetObject(this);
 
             yield return _wait;
         }

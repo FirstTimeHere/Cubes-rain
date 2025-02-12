@@ -2,178 +2,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class CustomObjectPool
+public class CustomObjectPool<T> where T : Component
 {
-    private Cube _cube;
-    private Bomb _bomb;
+    private T _prefab;
 
-    private ObjectPool<Cube> _poolCube;
-    private ObjectPool<Bomb> _poolBomb;
+    private ObjectPool<T> _poolObject;
 
-    public CustomObjectPool(Cube prefabCube, int maxNumbersCube, int minNumbersCube = 10)
+    public CustomObjectPool(T prefabObject, int maxNumberObjects, int minNumberObjects = 10)
     {
-        if (minNumbersCube > maxNumbersCube)
+        if (minNumberObjects > maxNumberObjects)
         {
-            maxNumbersCube = minNumbersCube;
+            maxNumberObjects = minNumberObjects;
         }
 
-        _cube = prefabCube;
-        _poolCube = new ObjectPool<Cube>(CreateCube, 
-            OnGetCubeFromPool, OnReleasedPool, OnDestroyCube, 
-            true, minNumbersCube, maxNumbersCube);
+        _prefab = prefabObject;
+        _poolObject = new ObjectPool<T>(CreateObject,
+            OnGetObjectFromPool, OnReleasedPool, OnDestroyObject,
+            true, minNumberObjects, maxNumberObjects);
     }
 
-    public CustomObjectPool(Bomb prefabBomb, int maxNumbersCube, int minNumbersCube = 10)
-    {
-        if (minNumbersCube > maxNumbersCube)
-        {
-            maxNumbersCube = minNumbersCube;
-        }
+    //public Bomb GetBomb(Transform transform, SpawnerBomb spawner)
+    //{
+    //    Bomb bomb;
 
-        _bomb = prefabBomb;
-        _poolBomb = new ObjectPool<Bomb>(CreateBomb,
-            OnGetBombFromPool, OnReleasedBombFromPool, OnDestroyBomb,
-            true, minNumbersCube, maxNumbersCube);
+    //    int randomTime = GetRandomTime();
+
+    //    bomb = _poolBomb.Get();
+
+    //    bomb.ReturnDefaultAlpha();
+
+    //    bomb.GetSpawner(spawner);
+
+    //    bomb.transform.position = transform.position;
+
+    //    bomb.ChangeLifeTimer(randomTime);
+
+    //    return bomb;
+    //}
+
+    public T GetObject(Spawner<T> spawner)
+    {
+        T @object;
+
+        @object = _poolObject.Get();
+        spawner.Spawn(@object);
+
+        return @object;
     }
 
-    private void OnDestroyBomb(Bomb bomb)
+    public int ShowCountAllObjects()
     {
-        Object.Destroy(bomb);
-    }
-
-    private void OnReleasedBombFromPool(Bomb bomb)
-    {
-        bomb.gameObject.SetActive(false);
-    }
-
-    private void OnGetBombFromPool(Bomb bomb)
-    {
-        bomb.gameObject.SetActive(true);
-    }
-
-    private Bomb CreateBomb()
-    {
-        Bomb bomb = Object.Instantiate(_bomb);
-        return bomb;
-    }
-
-    public Bomb GetBomb(Transform transform, SpawnerBomb spawner)
-    {
-        Bomb bomb;
-
-        int randomTime = GetRandomTime();
-
-        bomb = _poolBomb.Get();
-
-        bomb.ReturnDefaultAlpha();
-
-        bomb.GetSpawner(spawner);
-
-        bomb.transform.position = transform.position;
-
-        bomb.ChangeLifeTimer(randomTime);
-
-        return bomb;
-    }
-
-    public Cube GetCube(List<Transform> spawnPoints,  SpawnerCube spawner)
-    {
-        Cube cube;
-
-        int randomTime=GetRandomTime();
-        int spawnRandom = Random.Range(0, spawnPoints.Count);
-
-        var tempSpawnPoint = spawnPoints[spawnRandom];
-
-        cube = _poolCube.Get();
-
-        cube.GetComponent<MeshRenderer>().material.color = Color.white;
-
-        cube.ReturnColor();
-
-        cube.GetSpawner(spawner);
-
-        cube.transform.position = tempSpawnPoint.position;
-
-        cube.ChangeLifeTimer(randomTime);
-
-        return cube;
-    }
-
-    public int ShowCountAllCubes()
-    {
-        int objectCount = _poolCube.CountAll;
+        int objectCount = _poolObject.CountAll;
         return objectCount;
     }
 
-    public int ShowCountActiveCubes()
+    public int ShowCountActiveObjects()
     {
-        int objectCount = _poolCube.CountActive;
+        int objectCount = _poolObject.CountActive;
         return objectCount;
     }
 
-    public int ShowCountInactiveCubes()
+    public int ShowCountInactiveObjects()
     {
-        int objectCount = _poolCube.CountInactive;
+        int objectCount = _poolObject.CountInactive;
         return objectCount;
     }
 
-    public int ShowCountAllBombs()
+    public void Release(T @object)
     {
-        int objectCount = _poolBomb.CountAll;
-        return objectCount;
+        _poolObject.Release(@object);
     }
 
-    public int ShowCountActiveBombs()
+    private void OnDestroyObject(T @object)
     {
-        int objectCount = _poolBomb.CountActive;
-        return objectCount;
+        Object.Destroy(@object);
     }
 
-    public int ShowCountInactiveBombs()
+    private T CreateObject()
     {
-        int objectCount = _poolBomb.CountInactive;
-        return objectCount;
+        T @object = Object.Instantiate(_prefab);
+
+        return @object;
     }
 
-    public void Release(Cube cube)
+    private void OnGetObjectFromPool(T @object)
     {
-        _poolCube.Release(cube);
+        @object.gameObject.SetActive(true);
     }
 
-    public void Release(Bomb bomb)
+    private void OnReleasedPool(T @object)
     {
-        _poolBomb.Release(bomb);
+        @object.gameObject.SetActive(false);
     }
 
-    private void OnDestroyCube(Cube cube)
-    {
-        Object.Destroy(cube);
-    }
-
-    private Cube CreateCube()
-    {
-        Cube cube = Object.Instantiate(_cube);
-
-        return cube;
-    }
-
-    private void OnGetCubeFromPool(Cube cube)
-    {
-        cube.gameObject.SetActive(true);
-    }
-
-    private void OnReleasedPool(Cube cube)
-    {
-        cube.gameObject.SetActive(false);
-    }
-
-    private int GetRandomTime()
-    {
-        int minRandom = 2;
-        int maxRandom = 6;
-        int randomTime = Random.Range(minRandom, maxRandom);
-
-        return randomTime;
-    }
 }

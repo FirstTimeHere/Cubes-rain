@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Spawner<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class Spawner<T> : MonoBehaviour where T : Component
 {
     protected T Prefab;
 
@@ -19,5 +19,16 @@ public abstract class Spawner<T> : MonoBehaviour where T : MonoBehaviour
         Created?.Invoke();
 
         return @object;
+    }
+
+    public virtual void Spawn(T @object) { }
+
+    public virtual int RandomTime()
+    {
+        int minRandom = 2;
+        int maxRandom = 6;
+        int randomTime = UnityEngine.Random.Range(minRandom, maxRandom);
+
+        return randomTime;
     }
 }
