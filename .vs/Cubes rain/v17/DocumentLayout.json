@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "E:\\GitHub\\Cubes rain\\Cubes rain\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawnercube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|e:\\github\\cubes rain\\cubes rain\\assets\\scripts\\spawnercube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnercube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawnerbomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerbomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\customobjectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\customobjectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|e:\\github\\cubes rain\\cubes rain\\assets\\scripts\\spawnerplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawnerbomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerbomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,6 +25,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\info.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|E:\\GitHub\\Cubes rain\\Cubes rain\\assets\\scripts\\spawnerplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00638DFE-3595-F33B-14B5-CE40FAC7DEE4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +46,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "SpawnerPlatform.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\SpawnerPlatform.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerPlatform.cs",
@@ -59,13 +59,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CustomObjectPool.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\CustomObjectPool.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CustomObjectPool.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\CustomObjectPool.cs",
               "RelativeToolTip": "Assets\\Scripts\\CustomObjectPool.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAADwv0AAAAAnAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAkwEQAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-09T16:11:42.8Z",
               "EditorCaption": ""
@@ -78,72 +78,72 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerCube.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\SpawnerCube.cs",
               "RelativeToolTip": "Assets\\Scripts\\SpawnerCube.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAADwvykAAAAFAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwDcAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:41:53.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Info.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Info.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Info.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Info.cs",
               "RelativeToolTip": "Assets\\Scripts\\Info.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAyAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-17T11:01:54.87Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Bomb.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Bomb.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Bomb.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Bomb.cs",
               "RelativeToolTip": "Assets\\Scripts\\Bomb.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAUwCYAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-15T19:25:39.41Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "SpawnerBomb.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\SpawnerBomb.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerBomb.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\SpawnerBomb.cs",
               "RelativeToolTip": "Assets\\Scripts\\SpawnerBomb.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowCcAAAArAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAADYAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:41:00.447Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Cube.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Cube.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Cube.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Cube.cs",
               "RelativeToolTip": "Assets\\Scripts\\Cube.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAASwDgAAAAbAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAA1wDMAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T16:40:55.84Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Spawner.cs",
               "DocumentMoniker": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Spawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Spawner.cs",
               "ToolTip": "E:\\GitHub\\Cubes rain\\Cubes rain\\Assets\\Scripts\\Spawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\Spawner.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAjAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAA2wC4AAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T16:40:57.104Z",
               "EditorCaption": ""

@@ -17,7 +17,7 @@ public class SpawnerCube : Spawner<Cube>
 
     private WaitForSeconds _wait;
 
-    public System.Action<Transform> RelesedCube;
+    public System.Action<Cube> RelesedCube;
 
     private void Awake()
     {
@@ -26,22 +26,35 @@ public class SpawnerCube : Spawner<Cube>
         _pool = new CustomObjectPool<Cube>(_cube, _numbersOfCubes);
     }
 
+    private void OnEnable()
+    {
+        _pool.ChangedCountAll += ShowCountAllObjects;
+        _pool.ChangedCountActive += ShowCountActiveObjects;
+        _pool.ChangedCountInactive += ShowCountInactiveObjects;
+
+        _cube.Released += ReleaseObjectPool;
+    }
+
+    private void OnDisable()
+    {
+        _pool.ChangedCountAll -= ShowCountAllObjects;
+        _pool.ChangedCountActive -= ShowCountActiveObjects;
+        _pool.ChangedCountInactive -= ShowCountInactiveObjects;
+
+        _cube.Released -= ReleaseObjectPool;
+    }
+
     private void Start()
     {
         StartCoroutine(GetCubes());
     }
 
-    private void Update()
-    {
-        AllObjects = _pool.ShowCountAllObjects();
-        ActiveObjects = _pool.ShowCountActiveObjects();
-        InactiveObjects = _pool.ShowCountInactiveObjects();
-    }
-
-    public void ReleaseObjectPool(Cube cube)
+    private void ReleaseObjectPool(Cube cube)
     {
         _pool.Release(cube);
-        RelesedCube?.Invoke(cube.transform);
+        Debug.Log(cube.GetInstanceID());
+        Debug.Log(_pool.ToString());
+        RelesedCube?.Invoke(cube);
     }
 
     public override void Spawn(Cube @object)
@@ -50,8 +63,6 @@ public class SpawnerCube : Spawner<Cube>
         int spawnRandom = Random.Range(0, _spawnPoints.Count);
 
         var tempSpawnPoint = _spawnPoints[spawnRandom];
-
-        @object.GetSpawner(this);
 
         @object.GetComponent<MeshRenderer>().material.color = Color.white;
 

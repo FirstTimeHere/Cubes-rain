@@ -21,41 +21,43 @@ public class SpawnerBomb : Spawner<Bomb>
     private void OnEnable()
     {
         _spawnerCube.RelesedCube += CreateBomb;
+
+        _pool.ChangedCountAll += ShowCountAllObjects;
+        _pool.ChangedCountActive += ShowCountActiveObjects;
+        _pool.ChangedCountInactive += ShowCountInactiveObjects;
+
+        _bomb.Released += ReleaseObjectPool;
     }
 
     private void OnDisable()
     {
         _spawnerCube.RelesedCube -= CreateBomb;
+
+        _pool.ChangedCountAll -= ShowCountAllObjects;
+        _pool.ChangedCountActive -= ShowCountActiveObjects;
+        _pool.ChangedCountInactive -= ShowCountInactiveObjects;
+
+        _bomb.Released -= ReleaseObjectPool;
     }
 
-    private void Update()
+    private void CreateBomb(Cube cube)
     {
-        AllObjects = _pool.ShowCountAllObjects();
-        ActiveObjects = _pool.ShowCountActiveObjects();
-        InactiveObjects = _pool.ShowCountInactiveObjects();
-    }
-
-    private void CreateBomb(Transform transform)
-    {
-        _transformCubePosition = transform;
+        _transformCubePosition = cube.transform;
+        _pool.GetObject(this);
     }
 
     public override void Spawn(Bomb @object)
     {
         int randomTime = RandomTime();
-        
-        _pool.GetObject(this);
-
-        @object.ReturnDefaultAlpha();
-
-        @object.GetSpawner(this);
 
         @object.transform.position = _transformCubePosition.position;
+
+        @object.ReturnDefaultAlpha();
 
         @object.ChangeLifeTimer(randomTime);
     }
 
-    public void ReleaseObjectPool(Bomb bomb)
+    private void ReleaseObjectPool(Bomb bomb)
     {
         _pool.Release(bomb);
     }

@@ -14,23 +14,9 @@ public class Info : MonoBehaviour
         GetSettingsText();
     }
 
-    //private void OnEnable()
-    //{
-    //    _spawnerCubs.Created += GetText;
-    //    _spawnerBomb.Created += GetText;
-    //    _spawnerPlatforms.Created += GetText;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _spawnerCubs.Created -= GetText;
-    //    _spawnerBomb.Created -= GetText;
-    //    _spawnerPlatforms.Created -= GetText;
-    //}
-
     private void Update()
     {
-        GetText();
+        ShowText();
     }
 
     private void GetSettingsText()
@@ -40,7 +26,7 @@ public class Info : MonoBehaviour
         _text.color = Color.black;
     }
 
-    private void GetText()
+    private void ShowText()
     {
         _text.text = $"Всего кубов: {_spawnerCubs.AllObjects}\n" +
             $"Активных: {_spawnerCubs.ActiveObjects}\n" +

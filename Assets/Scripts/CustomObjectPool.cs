@@ -1,12 +1,17 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class CustomObjectPool<T> where T : Component
 {
-    private T _prefab;
+    private readonly T _prefab;
 
-    private ObjectPool<T> _poolObject;
+    private readonly ObjectPool<T> _poolObject;
+
+    public Action<int> ChangedCountAll;
+    public Action<int> ChangedCountActive;
+    public Action<int> ChangedCountInactive;
 
     public CustomObjectPool(T prefabObject, int maxNumberObjects, int minNumberObjects = 10)
     {
@@ -21,25 +26,6 @@ public class CustomObjectPool<T> where T : Component
             true, minNumberObjects, maxNumberObjects);
     }
 
-    //public Bomb GetBomb(Transform transform, SpawnerBomb spawner)
-    //{
-    //    Bomb bomb;
-
-    //    int randomTime = GetRandomTime();
-
-    //    bomb = _poolBomb.Get();
-
-    //    bomb.ReturnDefaultAlpha();
-
-    //    bomb.GetSpawner(spawner);
-
-    //    bomb.transform.position = transform.position;
-
-    //    bomb.ChangeLifeTimer(randomTime);
-
-    //    return bomb;
-    //}
-
     public T GetObject(Spawner<T> spawner)
     {
         T @object;
@@ -47,40 +33,27 @@ public class CustomObjectPool<T> where T : Component
         @object = _poolObject.Get();
         spawner.Spawn(@object);
 
+        ChangedCountAll?.Invoke(_poolObject.CountAll);
+
         return @object;
-    }
-
-    public int ShowCountAllObjects()
-    {
-        int objectCount = _poolObject.CountAll;
-        return objectCount;
-    }
-
-    public int ShowCountActiveObjects()
-    {
-        int objectCount = _poolObject.CountActive;
-        return objectCount;
-    }
-
-    public int ShowCountInactiveObjects()
-    {
-        int objectCount = _poolObject.CountInactive;
-        return objectCount;
     }
 
     public void Release(T @object)
     {
         _poolObject.Release(@object);
+
+        ChangedCountActive?.Invoke(_poolObject.CountActive);
+        ChangedCountInactive?.Invoke(_poolObject.CountInactive);
     }
 
     private void OnDestroyObject(T @object)
     {
-        Object.Destroy(@object);
+        UnityEngine.Object.Destroy(@object);
     }
 
     private T CreateObject()
     {
-        T @object = Object.Instantiate(_prefab);
+        T @object = UnityEngine.Object.Instantiate(_prefab);
 
         return @object;
     }
@@ -94,5 +67,4 @@ public class CustomObjectPool<T> where T : Component
     {
         @object.gameObject.SetActive(false);
     }
-
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class Bomb : MonoBehaviour
@@ -13,9 +14,9 @@ public class Bomb : MonoBehaviour
 
     private Material _material;
 
-    private SpawnerBomb _spawner;
-
     private Color _color;
+
+    public Action<Bomb> Released;
 
     private void Awake()
     {
@@ -36,11 +37,6 @@ public class Bomb : MonoBehaviour
         _lifeTimerForColor = time;
     }
 
-    public void GetSpawner(SpawnerBomb spawner)
-    {
-        _spawner = spawner;
-    }
-
     public void ReturnDefaultAlpha()
     {
         _color.a = 1f;
@@ -53,7 +49,7 @@ public class Bomb : MonoBehaviour
             hit.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
 
-        _spawner.ReleaseObjectPool(this);
+        Released?.Invoke(this);
     }
 
     private List<Rigidbody> GetExlodableObjects()

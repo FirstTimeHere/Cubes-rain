@@ -31,4 +31,19 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 
         return randomTime;
     }
+
+    protected void ShowCountAllObjects(int count)
+    {
+        AllObjects = count;
+    }
+
+    protected void ShowCountActiveObjects(int count)
+    {
+        ActiveObjects = count;
+    }
+
+    protected void ShowCountInactiveObjects(int count)
+    {
+        InactiveObjects = count;
+    }
 }

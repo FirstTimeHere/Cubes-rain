@@ -10,18 +10,13 @@ public class Cube : MonoBehaviour
 
     private float _lifeTimer;
 
-    private SpawnerCube _spawner;
-
     private WaitForSeconds _wait;
+
+    public Action<Cube> Released;
 
     public void ReturnColor()
     {
         _isColorChanged = !_isColorChanged;
-    }
-
-    public void GetSpawner(SpawnerCube spawner)
-    {
-        _spawner = spawner;
     }
 
     public void ChangeLifeTimer(int time)
@@ -54,6 +49,6 @@ public class Cube : MonoBehaviour
             yield return _wait;
         }
 
-        _spawner.ReleaseObjectPool(this);
+        Released?.Invoke(this);
     }
 }
