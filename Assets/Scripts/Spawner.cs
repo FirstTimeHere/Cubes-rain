@@ -5,7 +5,7 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 {
     protected T Prefab;
 
-    public Action Created;
+    public event Action ChangedText;
 
     public virtual int AllObjects { get; protected set; }
 
@@ -16,7 +16,6 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
     protected virtual T Create()
     {
         T @object = Instantiate(Prefab);
-        Created?.Invoke();
 
         return @object;
     }
@@ -35,15 +34,18 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
     protected void ShowCountAllObjects(int count)
     {
         AllObjects = count;
+        ChangedText?.Invoke();
     }
 
     protected void ShowCountActiveObjects(int count)
     {
         ActiveObjects = count;
+        ChangedText?.Invoke();
     }
 
     protected void ShowCountInactiveObjects(int count)
     {
         InactiveObjects = count;
+        ChangedText?.Invoke();
     }
 }

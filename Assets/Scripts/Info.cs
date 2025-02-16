@@ -11,15 +11,22 @@ public class Info : MonoBehaviour
 
     private void Awake()
     {
-        GetSettingsText();
+        SetSettingsText();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        ShowText();
+        _spawnerBomb.ChangedText += ShowText;
+        _spawnerCubs.ChangedText += ShowText;
     }
 
-    private void GetSettingsText()
+    private void OnDisable()
+    {
+        _spawnerBomb.ChangedText -= ShowText;
+        _spawnerCubs.ChangedText -= ShowText;
+    }
+
+    private void SetSettingsText()
     {
         _text.enableAutoSizing = true;
         _text.overflowMode = TextOverflowModes.Overflow;

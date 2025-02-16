@@ -9,9 +9,9 @@ public class CustomObjectPool<T> where T : Component
 
     private readonly ObjectPool<T> _poolObject;
 
-    public Action<int> ChangedCountAll;
-    public Action<int> ChangedCountActive;
-    public Action<int> ChangedCountInactive;
+    public event Action<int> ChangedCountAll;
+    public event Action<int> ChangedCountActive;
+    public event Action<int> ChangedCountInactive;
 
     public CustomObjectPool(T prefabObject, int maxNumberObjects, int minNumberObjects = 10)
     {

@@ -12,7 +12,7 @@ public class Cube : MonoBehaviour
 
     private WaitForSeconds _wait;
 
-    public Action<Cube> Released;
+    public event Action<Cube> Released;
 
     public void ReturnColor()
     {

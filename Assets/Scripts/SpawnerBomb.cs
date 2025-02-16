@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,8 +26,6 @@ public class SpawnerBomb : Spawner<Bomb>
         _pool.ChangedCountAll += ShowCountAllObjects;
         _pool.ChangedCountActive += ShowCountActiveObjects;
         _pool.ChangedCountInactive += ShowCountInactiveObjects;
-
-        _bomb.Released += ReleaseObjectPool;
     }
 
     private void OnDisable()
@@ -36,14 +35,13 @@ public class SpawnerBomb : Spawner<Bomb>
         _pool.ChangedCountAll -= ShowCountAllObjects;
         _pool.ChangedCountActive -= ShowCountActiveObjects;
         _pool.ChangedCountInactive -= ShowCountInactiveObjects;
-
-        _bomb.Released -= ReleaseObjectPool;
     }
 
     private void CreateBomb(Cube cube)
     {
         _transformCubePosition = cube.transform;
-        _pool.GetObject(this);
+        var bomb = _pool.GetObject(this);
+        bomb.Released += ReleaseObjectPool;
     }
 
     public override void Spawn(Bomb @object)
@@ -60,5 +58,6 @@ public class SpawnerBomb : Spawner<Bomb>
     private void ReleaseObjectPool(Bomb bomb)
     {
         _pool.Release(bomb);
+        bomb.Released -= ReleaseObjectPool;
     }
 }

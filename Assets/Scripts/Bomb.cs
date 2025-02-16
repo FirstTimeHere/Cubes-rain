@@ -16,7 +16,7 @@ public class Bomb : MonoBehaviour
 
     private Color _color;
 
-    public Action<Bomb> Released;
+    public event Action<Bomb> Released;
 
     private void Awake()
     {

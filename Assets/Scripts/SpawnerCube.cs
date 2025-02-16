@@ -17,7 +17,7 @@ public class SpawnerCube : Spawner<Cube>
 
     private WaitForSeconds _wait;
 
-    public System.Action<Cube> RelesedCube;
+    public event System.Action<Cube> RelesedCube;
 
     private void Awake()
     {
@@ -31,8 +31,6 @@ public class SpawnerCube : Spawner<Cube>
         _pool.ChangedCountAll += ShowCountAllObjects;
         _pool.ChangedCountActive += ShowCountActiveObjects;
         _pool.ChangedCountInactive += ShowCountInactiveObjects;
-
-        _cube.Released += ReleaseObjectPool;
     }
 
     private void OnDisable()
@@ -40,8 +38,6 @@ public class SpawnerCube : Spawner<Cube>
         _pool.ChangedCountAll -= ShowCountAllObjects;
         _pool.ChangedCountActive -= ShowCountActiveObjects;
         _pool.ChangedCountInactive -= ShowCountInactiveObjects;
-
-        _cube.Released -= ReleaseObjectPool;
     }
 
     private void Start()
@@ -52,9 +48,8 @@ public class SpawnerCube : Spawner<Cube>
     private void ReleaseObjectPool(Cube cube)
     {
         _pool.Release(cube);
-        Debug.Log(cube.GetInstanceID());
-        Debug.Log(_pool.ToString());
         RelesedCube?.Invoke(cube);
+        cube.Released -= ReleaseObjectPool;
     }
 
     public override void Spawn(Cube @object)
@@ -73,12 +68,13 @@ public class SpawnerCube : Spawner<Cube>
         @object.ChangeLifeTimer(randomTime);
     }
 
-
     private IEnumerator GetCubes()
     {
         while (enabled)
         {
-            _pool.GetObject(this);
+           var cube =_pool.GetObject(this);
+
+            cube.Released += ReleaseObjectPool;
 
             yield return _wait;
         }
