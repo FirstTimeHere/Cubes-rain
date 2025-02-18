@@ -25,7 +25,7 @@ public class SpawnerBomb : Spawner<Bomb>
 
         _pool.ChangedCountAll += ShowCountAllObjects;
         _pool.ChangedCountActive += ShowCountActiveObjects;
-        _pool.ChangedCountInactive += ShowCountInactiveObjects;
+        _pool.ChangedCountCreateObjects += ShowCountAllCreatedObjects;
     }
 
     private void OnDisable()
@@ -34,7 +34,7 @@ public class SpawnerBomb : Spawner<Bomb>
 
         _pool.ChangedCountAll -= ShowCountAllObjects;
         _pool.ChangedCountActive -= ShowCountActiveObjects;
-        _pool.ChangedCountInactive -= ShowCountInactiveObjects;
+        _pool.ChangedCountCreateObjects -= ShowCountAllCreatedObjects;
     }
 
     private void CreateBomb(Cube cube)

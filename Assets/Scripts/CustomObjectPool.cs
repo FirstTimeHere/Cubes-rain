@@ -9,9 +9,11 @@ public class CustomObjectPool<T> where T : Component
 
     private readonly ObjectPool<T> _poolObject;
 
+    private int _instantiateCount = 0;
+
     public event Action<int> ChangedCountAll;
     public event Action<int> ChangedCountActive;
-    public event Action<int> ChangedCountInactive;
+    public event Action<int> ChangedCountCreateObjects;
 
     public CustomObjectPool(T prefabObject, int maxNumberObjects, int minNumberObjects = 10)
     {
@@ -43,7 +45,6 @@ public class CustomObjectPool<T> where T : Component
         _poolObject.Release(@object);
 
         ChangedCountActive?.Invoke(_poolObject.CountActive);
-        ChangedCountInactive?.Invoke(_poolObject.CountInactive);
     }
 
     private void OnDestroyObject(T @object)
@@ -55,6 +56,7 @@ public class CustomObjectPool<T> where T : Component
     {
         T @object = UnityEngine.Object.Instantiate(_prefab);
 
+        ChangedCountCreateObjects?.Invoke(_instantiateCount++);
         return @object;
     }
 

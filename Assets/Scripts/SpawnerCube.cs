@@ -14,6 +14,7 @@ public class SpawnerCube : Spawner<Cube>
     [SerializeField] private List<Transform> _spawnPoints;
 
     private CustomObjectPool<Cube> _pool;
+    private Info<SpawnerCube> _info;
 
     private WaitForSeconds _wait;
 
@@ -28,16 +29,16 @@ public class SpawnerCube : Spawner<Cube>
 
     private void OnEnable()
     {
+        _pool.ChangedCountCreateObjects += ShowCountAllCreatedObjects;
         _pool.ChangedCountAll += ShowCountAllObjects;
         _pool.ChangedCountActive += ShowCountActiveObjects;
-        _pool.ChangedCountInactive += ShowCountInactiveObjects;
     }
 
     private void OnDisable()
     {
+        _pool.ChangedCountCreateObjects -= ShowCountAllCreatedObjects;
         _pool.ChangedCountAll -= ShowCountAllObjects;
         _pool.ChangedCountActive -= ShowCountActiveObjects;
-        _pool.ChangedCountInactive -= ShowCountInactiveObjects;
     }
 
     private void Start()
@@ -48,8 +49,8 @@ public class SpawnerCube : Spawner<Cube>
     private void ReleaseObjectPool(Cube cube)
     {
         _pool.Release(cube);
-        RelesedCube?.Invoke(cube);
         cube.Released -= ReleaseObjectPool;
+        RelesedCube?.Invoke(cube);
     }
 
     public override void Spawn(Cube @object)
@@ -72,7 +73,7 @@ public class SpawnerCube : Spawner<Cube>
     {
         while (enabled)
         {
-           var cube =_pool.GetObject(this);
+            var cube = _pool.GetObject(this);
 
             cube.Released += ReleaseObjectPool;
 

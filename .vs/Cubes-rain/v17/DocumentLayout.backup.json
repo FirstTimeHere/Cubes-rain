@@ -1,0 +1,109 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\cubes-rain\\assets\\scripts\\spawnercube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnercube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\cubes-rain\\assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\cubes-rain\\assets\\scripts\\info.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\cubes-rain\\assets\\scripts\\customobjectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\customobjectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\cubes-rain\\assets\\scripts\\spawnerplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B09EEBB3-C322-B7BA-5740-2FCF9D8ED71E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Info.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\Info.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Info.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\Info.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Info.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T06:51:44.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CustomObjectPool.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\CustomObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CustomObjectPool.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\CustomObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CustomObjectPool.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T06:47:55.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Spawner.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\Spawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Spawner.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\Spawner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Spawner.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAIwAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T06:47:14.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SpawnerCube.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\SpawnerCube.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerCube.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\SpawnerCube.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SpawnerCube.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T06:46:41.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SpawnerPlatform.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\SpawnerPlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerPlatform.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\Cubes-rain\\Assets\\Scripts\\SpawnerPlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SpawnerPlatform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T06:18:52.703Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

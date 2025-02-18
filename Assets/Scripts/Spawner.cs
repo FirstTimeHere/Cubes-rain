@@ -11,7 +11,7 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 
     public virtual int ActiveObjects { get; protected set; }
 
-    public virtual int InactiveObjects { get; protected set; }
+    public virtual int InstantiateObjects { get; protected set; }
 
     protected virtual T Create()
     {
@@ -43,9 +43,9 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
         ChangedText?.Invoke();
     }
 
-    protected void ShowCountInactiveObjects(int count)
+    protected void ShowCountAllCreatedObjects(int count)
     {
-        InactiveObjects = count;
+        InstantiateObjects = count;
         ChangedText?.Invoke();
     }
 }

@@ -1,12 +1,8 @@
 using TMPro;
 using UnityEngine;
 
-public class Info : MonoBehaviour
+public class Info<T> : MonoBehaviour where T : Component
 {
-    [SerializeField] private SpawnerCube _spawnerCubs;
-    [SerializeField] private SpawnerBomb _spawnerBomb;
-    [SerializeField] private SpawnerPlatform _spawnerPlatforms;
-
     [SerializeField] private TextMeshProUGUI _text;
 
     private void Awake()
@@ -14,18 +10,12 @@ public class Info : MonoBehaviour
         SetSettingsText();
     }
 
-    private void OnEnable()
+    public Info(T showInstantate,T showGet,T showAcveObjects)
     {
-        _spawnerBomb.ChangedText += ShowText;
-        _spawnerCubs.ChangedText += ShowText;
+        _instantiate = showInstantate;
+        _showGet = showGet;
+        _activeObjects = showAcveObjects;
     }
-
-    private void OnDisable()
-    {
-        _spawnerBomb.ChangedText -= ShowText;
-        _spawnerCubs.ChangedText -= ShowText;
-    }
-
     private void SetSettingsText()
     {
         _text.enableAutoSizing = true;
@@ -33,13 +23,10 @@ public class Info : MonoBehaviour
         _text.color = Color.black;
     }
 
-    private void ShowText()
+    public void ShowText()
     {
-        _text.text = $"Всего кубов: {_spawnerCubs.AllObjects}\n" +
-            $"Активных: {_spawnerCubs.ActiveObjects}\n" +
-            $"Неактивных: {_spawnerCubs.InactiveObjects}\n" +
-            $"Всего бомб: {_spawnerBomb.AllObjects}\n" +
-            $"Активных: {_spawnerBomb.ActiveObjects}\n" +
-            $"Неактивных: {_spawnerBomb.InactiveObjects}\n";
+        _text.text = $"Сколько раз вызван Instantiate: {_instantiate}\n" +
+            $"Всего объектов/вызовов GET: {_showGet}\n" +
+            $"Активных объектов: {_activeObjects}\n\n";
     }
 }
