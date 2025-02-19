@@ -355,7 +355,6 @@
 "Assets/Scripts/Bomb.cs"
 "Assets/Scripts/Cube.cs"
 "Assets/Scripts/CustomObjectPool.cs"
-"Assets/Scripts/Info.cs"
 "Assets/Scripts/Platform.cs"
 "Assets/Scripts/Spawner.cs"
 "Assets/Scripts/SpawnerBomb.cs"

@@ -14,7 +14,7 @@ public class Cube : MonoBehaviour
 
     public event Action<Cube> Released;
 
-    public void ReturnColor()
+    public void ChangeBoolForColor()
     {
         _isColorChanged = !_isColorChanged;
     }

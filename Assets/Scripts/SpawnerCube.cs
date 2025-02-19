@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SpawnerBomb))]
@@ -14,7 +15,6 @@ public class SpawnerCube : Spawner<Cube>
     [SerializeField] private List<Transform> _spawnPoints;
 
     private CustomObjectPool<Cube> _pool;
-    private Info<SpawnerCube> _info;
 
     private WaitForSeconds _wait;
 
@@ -25,6 +25,8 @@ public class SpawnerCube : Spawner<Cube>
         _wait = new WaitForSeconds(_waitTime);
 
         _pool = new CustomObjectPool<Cube>(_cube, _numbersOfCubes);
+
+        SetSettingsText();
     }
 
     private void OnEnable()
@@ -60,9 +62,11 @@ public class SpawnerCube : Spawner<Cube>
 
         var tempSpawnPoint = _spawnPoints[spawnRandom];
 
-        @object.GetComponent<MeshRenderer>().material.color = Color.white;
-
-        @object.ReturnColor();
+        if (@object.TryGetComponent(out MeshRenderer mesh))
+        {
+            mesh.material.color = Color.white;
+            @object.ChangeBoolForColor();
+        }
 
         @object.transform.position = tempSpawnPoint.position;
 

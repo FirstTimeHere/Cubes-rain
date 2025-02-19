@@ -4,6 +4,9 @@ public class Platform : MonoBehaviour
 {
     public void GetNewColorCube(Cube cube)
     {
-        cube.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        if (cube.TryGetComponent(out MeshRenderer mesh))
+        {
+            mesh.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        }
     }
 }

@@ -52,6 +52,12 @@ public class Bomb : MonoBehaviour
         Released?.Invoke(this);
     }
 
+    private void ChangeAlpha(float alpha)
+    {
+        _color.a = alpha;
+        _material.color = _color;
+    }
+
     private List<Rigidbody> GetExlodableObjects()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
@@ -96,11 +102,5 @@ public class Bomb : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    private void ChangeAlpha(float alpha)
-    {
-        _color.a = alpha;
-        _material.color = _color;
     }
 }

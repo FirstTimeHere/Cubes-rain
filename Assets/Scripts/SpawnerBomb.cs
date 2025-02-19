@@ -17,6 +17,7 @@ public class SpawnerBomb : Spawner<Bomb>
     private void Awake()
     {
         _pool = new CustomObjectPool<Bomb>(_bomb, _maxCountBomb);
+        SetSettingsText();
     }
 
     private void OnEnable()
