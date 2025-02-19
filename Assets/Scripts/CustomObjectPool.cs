@@ -36,6 +36,7 @@ public class CustomObjectPool<T> where T : Component
         spawner.Spawn(@object);
 
         ChangedCountAll?.Invoke(_poolObject.CountAll);
+        ChangedCountActive?.Invoke(_poolObject.CountActive);
 
         return @object;
     }
