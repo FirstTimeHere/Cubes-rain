@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Spawner<T> : MonoBehaviour where T : Component
@@ -8,8 +7,6 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
     protected T Prefab;
 
     public event Action ChangedText;
-
-    [field:SerializeField] private TextMeshProUGUI Text { get; set; }
 
     public virtual int AllObjects { get; protected set; }
 
@@ -26,7 +23,7 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 
     public virtual void Spawn(T @object) { }
 
-    public virtual int RandomTime()
+    public int GetRandomTime()
     {
         int minRandom = 2;
         int maxRandom = 6;
@@ -45,28 +42,20 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
     protected void ShowCountAllObjects(int count)
     {
         AllObjects = count;
-        ShowInfo(Text);
         ChangedText?.Invoke();
     }
 
     protected void ShowCountActiveObjects(int count)
     {
         ActiveObjects = count;
-        ShowInfo(Text);
         ChangedText?.Invoke();
     }
 
     protected void ShowCountAllCreatedObjects(int count)
     {
         InstantiateObjects = count;
-        ShowInfo(Text);
         ChangedText?.Invoke();
     }
 
-    protected void SetSettingsText()
-    {
-        Text.enableAutoSizing = true;
-        Text.overflowMode = TextOverflowModes.Overflow;
-        Text.color = Color.black;
-    }
+
 }

@@ -6,39 +6,24 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    private bool _isColorChanged = true;
-
     private float _lifeTimer;
 
     private WaitForSeconds _wait;
 
     public event Action<Cube> Released;
-
-    public void ChangeBoolForColor()
-    {
-        _isColorChanged = !_isColorChanged;
-    }
-
-    public void ChangeLifeTimer(int time)
-    {
-        _lifeTimer = time;
-    }
+    public event Action<Cube> TouchedPlatform;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.TryGetComponent(out Platform platform))
         {
-            if (_isColorChanged == false)
-            {
-                _isColorChanged = true;
-                platform.GetNewColorCube(this);
-            }
+            TouchedPlatform?.Invoke(this);
 
-            StartCoroutine(GetLifeTime(_lifeTimer));
+            StartCoroutine(GetLifeTimer(_lifeTimer));
         }
     }
 
-    private IEnumerator GetLifeTime(float delay)
+    private IEnumerator GetLifeTimer(float delay)
     {
         _wait = new WaitForSeconds(delay);
 
@@ -50,5 +35,10 @@ public class Cube : MonoBehaviour
         }
 
         Released?.Invoke(this);
+    }
+
+    public void ChangeLifeTimer(int time)
+    {
+        _lifeTimer = time;
     }
 }

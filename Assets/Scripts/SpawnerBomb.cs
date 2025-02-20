@@ -17,7 +17,6 @@ public class SpawnerBomb : Spawner<Bomb>
     private void Awake()
     {
         _pool = new CustomObjectPool<Bomb>(_bomb, _maxCountBomb);
-        SetSettingsText();
     }
 
     private void OnEnable()
@@ -47,7 +46,7 @@ public class SpawnerBomb : Spawner<Bomb>
 
     public override void Spawn(Bomb @object)
     {
-        int randomTime = RandomTime();
+        int randomTime = GetRandomTime();
 
         @object.transform.position = _transformCubePosition.position;
 

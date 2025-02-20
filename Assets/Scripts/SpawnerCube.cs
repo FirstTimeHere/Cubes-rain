@@ -4,9 +4,11 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SpawnerBomb))]
+[RequireComponent(typeof(ColorChanger))]
 
 public class SpawnerCube : Spawner<Cube>
 {
+    [SerializeField] private ColorChanger _changer;
     [SerializeField] private Cube _cube;
 
     [SerializeField] private float _waitTime = 0.1f;
@@ -25,6 +27,8 @@ public class SpawnerCube : Spawner<Cube>
         _wait = new WaitForSeconds(_waitTime);
 
         _pool = new CustomObjectPool<Cube>(_cube, _numbersOfCubes);
+
+        _changer = GetComponent<ColorChanger>();
 
         SetSettingsText();
     }
@@ -51,22 +55,20 @@ public class SpawnerCube : Spawner<Cube>
     private void ReleaseObjectPool(Cube cube)
     {
         _pool.Release(cube);
+
+        cube.Released -= _changer.GetDefaultColor;
         cube.Released -= ReleaseObjectPool;
+        cube.TouchedPlatform -= _changer.GetNewColorCube;
+
         RelesedCube?.Invoke(cube);
     }
 
     public override void Spawn(Cube @object)
     {
-        int randomTime = RandomTime();
+        int randomTime = GetRandomTime();
         int spawnRandom = Random.Range(0, _spawnPoints.Count);
 
         var tempSpawnPoint = _spawnPoints[spawnRandom];
-
-        if (@object.TryGetComponent(out MeshRenderer mesh))
-        {
-            mesh.material.color = Color.white;
-            @object.ChangeBoolForColor();
-        }
 
         @object.transform.position = tempSpawnPoint.position;
 
@@ -80,6 +82,10 @@ public class SpawnerCube : Spawner<Cube>
             var cube = _pool.GetObject(this);
 
             cube.Released += ReleaseObjectPool;
+
+            cube.Released += _changer.GetDefaultColor;
+
+            cube.TouchedPlatform += _changer.GetNewColorCube;
 
             yield return _wait;
         }
