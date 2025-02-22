@@ -6,7 +6,9 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 {
     protected T Prefab;
 
-    public event Action ChangedText;
+    public event Action<Spawner<T>> ChangedText;
+
+    [field :SerializeField] protected TextMeshProUGUI Text;
 
     public virtual int AllObjects { get; protected set; }
 
@@ -32,30 +34,21 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
         return randomTime;
     }
 
-    private void ShowInfo(TextMeshProUGUI text)
-    {
-        text.text = $"Сколько раз вызван Instantiate: {InstantiateObjects}\n" +
-            $"Всего объектов/вызовов GET: {AllObjects}\n" +
-            $"Активных объектов: {ActiveObjects}\n\n";
-    }
-
-    protected void ShowCountAllObjects(int count)
+    public void ShowCountAllObjects(int count)
     {
         AllObjects = count;
-        ChangedText?.Invoke();
+        ChangedText?.Invoke(this);
     }
 
-    protected void ShowCountActiveObjects(int count)
+    public void ShowCountActiveObjects(int count)
     {
         ActiveObjects = count;
-        ChangedText?.Invoke();
+        ChangedText?.Invoke(this);
     }
 
-    protected void ShowCountAllCreatedObjects(int count)
+    public void ShowCountAllCreatedObjects(int count)
     {
         InstantiateObjects = count;
-        ChangedText?.Invoke();
+        ChangedText?.Invoke(this);
     }
-
-
 }

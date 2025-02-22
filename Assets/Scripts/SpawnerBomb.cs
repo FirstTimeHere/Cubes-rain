@@ -12,11 +12,15 @@ public class SpawnerBomb : Spawner<Bomb>
 
     private Transform _transformCubePosition;
 
+    private InfoText<Bomb> _info;
+
     private int _maxCountBomb = 15;
 
     private void Awake()
     {
         _pool = new CustomObjectPool<Bomb>(_bomb, _maxCountBomb);
+
+        _info = new InfoText<Bomb>(this, Text);
     }
 
     private void OnEnable()

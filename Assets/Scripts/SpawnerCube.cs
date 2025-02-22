@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SpawnerBomb))]
@@ -20,6 +19,8 @@ public class SpawnerCube : Spawner<Cube>
 
     private WaitForSeconds _wait;
 
+    private InfoText<Cube> _info;
+
     public event System.Action<Cube> RelesedCube;
 
     private void Awake()
@@ -28,9 +29,9 @@ public class SpawnerCube : Spawner<Cube>
 
         _pool = new CustomObjectPool<Cube>(_cube, _numbersOfCubes);
 
-        _changer = GetComponent<ColorChanger>();
+        _info = new InfoText<Cube>(this, Text);
 
-        SetSettingsText();
+        _changer = GetComponent<ColorChanger>();
     }
 
     private void OnEnable()
@@ -50,6 +51,22 @@ public class SpawnerCube : Spawner<Cube>
     private void Start()
     {
         StartCoroutine(GetCubes());
+    }
+
+    private IEnumerator GetCubes()
+    {
+        while (enabled)
+        {
+            var cube = _pool.GetObject(this);
+
+            cube.Released += ReleaseObjectPool;
+
+            cube.Released += _changer.GetDefaultColor;
+
+            cube.TouchedPlatform += _changer.GetNewColorCube;
+
+            yield return _wait;
+        }
     }
 
     private void ReleaseObjectPool(Cube cube)
@@ -73,21 +90,5 @@ public class SpawnerCube : Spawner<Cube>
         @object.transform.position = tempSpawnPoint.position;
 
         @object.ChangeLifeTimer(randomTime);
-    }
-
-    private IEnumerator GetCubes()
-    {
-        while (enabled)
-        {
-            var cube = _pool.GetObject(this);
-
-            cube.Released += ReleaseObjectPool;
-
-            cube.Released += _changer.GetDefaultColor;
-
-            cube.TouchedPlatform += _changer.GetNewColorCube;
-
-            yield return _wait;
-        }
     }
 }

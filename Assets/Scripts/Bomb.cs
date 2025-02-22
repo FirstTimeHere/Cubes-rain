@@ -31,6 +31,35 @@ public class Bomb : MonoBehaviour
         StartCoroutine(GetAlphaChange());
     }
 
+    private IEnumerator GetLifeTime(float delay)
+    {
+        _wait = new WaitForSecondsRealtime(delay);
+
+        while (_lifeTimer > 0)
+        {
+            _lifeTimer--;
+            yield return _wait;
+        }
+
+        Explode();
+    }
+
+    private IEnumerator GetAlphaChange()
+    {
+        float startAlpha = _material.color.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < _lifeTimerForColor)
+        {
+            float currentAlpha = Mathf.Lerp(startAlpha, 0f, elapsedTime / _lifeTimerForColor);
+            ChangeAlpha(currentAlpha);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
     public void ChangeLifeTimer(int time)
     {
         _lifeTimer = time;
@@ -73,34 +102,5 @@ public class Bomb : MonoBehaviour
         }
 
         return explodedObjects;
-    }
-
-    private IEnumerator GetLifeTime(float delay)
-    {
-        _wait = new WaitForSecondsRealtime(delay);
-
-        while (_lifeTimer > 0)
-        {
-            _lifeTimer--;
-            yield return _wait;
-        }
-
-        Explode();
-    }
-
-    private IEnumerator GetAlphaChange()
-    {
-        float startAlpha = _material.color.a;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < _lifeTimerForColor)
-        {
-            float currentAlpha = Mathf.Lerp(startAlpha, 0f, elapsedTime / _lifeTimerForColor);
-            ChangeAlpha(currentAlpha);
-
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
     }
 }
