@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpawnerBomb))]
-[RequireComponent(typeof(ColorChanger))]
 
 public class SpawnerCube : Spawner<Cube>
 {
-    [SerializeField] private ColorChanger _changer;
     [SerializeField] private Cube _cube;
 
     [SerializeField] private float _waitTime = 0.1f;
@@ -15,7 +13,7 @@ public class SpawnerCube : Spawner<Cube>
 
     [SerializeField] private List<Transform> _spawnPoints;
 
-    private CustomObjectPool<Cube> _pool;
+    private ObjectPool<Cube> _pool;
 
     private WaitForSeconds _wait;
 
@@ -27,11 +25,11 @@ public class SpawnerCube : Spawner<Cube>
     {
         _wait = new WaitForSeconds(_waitTime);
 
-        _pool = new CustomObjectPool<Cube>(_cube, _numbersOfCubes);
+        _pool = new ObjectPool<Cube>(_cube, _numbersOfCubes);
 
         _info = new InfoText<Cube>(this, Text);
 
-        _changer = GetComponent<ColorChanger>();
+        Changer = GetComponent<ColorChanger>();
     }
 
     private void OnEnable()
@@ -57,13 +55,14 @@ public class SpawnerCube : Spawner<Cube>
     {
         while (enabled)
         {
-            var cube = _pool.GetObject(this);
+            var cube = _pool.GetObject();
+            Spawn(cube);
 
             cube.Released += ReleaseObjectPool;
 
-            cube.Released += _changer.GetDefaultColor;
+            cube.Released += Changer.GetDefaultColor;
 
-            cube.TouchedPlatform += _changer.GetNewColorCube;
+            cube.TouchedPlatform += Changer.GetNewColorCube;
 
             yield return _wait;
         }
@@ -73,22 +72,22 @@ public class SpawnerCube : Spawner<Cube>
     {
         _pool.Release(cube);
 
-        cube.Released -= _changer.GetDefaultColor;
+        cube.Released -= Changer.GetDefaultColor;
         cube.Released -= ReleaseObjectPool;
-        cube.TouchedPlatform -= _changer.GetNewColorCube;
+        cube.TouchedPlatform -= Changer.GetNewColorCube;
 
         RelesedCube?.Invoke(cube);
     }
 
-    public override void Spawn(Cube @object)
+    protected override void Spawn(Cube cube)
     {
         int randomTime = GetRandomTime();
         int spawnRandom = Random.Range(0, _spawnPoints.Count);
 
         var tempSpawnPoint = _spawnPoints[spawnRandom];
 
-        @object.transform.position = tempSpawnPoint.position;
+        cube.transform.position = tempSpawnPoint.position;
 
-        @object.ChangeLifeTimer(randomTime);
+        cube.ChangeLifeTimer(randomTime);
     }
 }

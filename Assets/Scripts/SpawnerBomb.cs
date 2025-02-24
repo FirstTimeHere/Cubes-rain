@@ -8,7 +8,7 @@ public class SpawnerBomb : Spawner<Bomb>
     [SerializeField] private Bomb _bomb;
     [SerializeField] private SpawnerCube _spawnerCube;
 
-    private CustomObjectPool<Bomb> _pool;
+    private ObjectPool<Bomb> _pool;
 
     private Transform _transformCubePosition;
 
@@ -18,9 +18,11 @@ public class SpawnerBomb : Spawner<Bomb>
 
     private void Awake()
     {
-        _pool = new CustomObjectPool<Bomb>(_bomb, _maxCountBomb);
+        _pool = new ObjectPool<Bomb>(_bomb, _maxCountBomb);
 
         _info = new InfoText<Bomb>(this, Text);
+
+        Changer = GetComponent<ColorChanger>();
     }
 
     private void OnEnable()
@@ -44,24 +46,30 @@ public class SpawnerBomb : Spawner<Bomb>
     private void CreateBomb(Cube cube)
     {
         _transformCubePosition = cube.transform;
-        var bomb = _pool.GetObject(this);
+        var bomb = _pool.GetObject();
+        Spawn(bomb);
+
         bomb.Released += ReleaseObjectPool;
     }
 
-    public override void Spawn(Bomb @object)
+    protected override void Spawn(Bomb @object)
     {
         int randomTime = GetRandomTime();
 
+        @object.Released += Changer.GetDefaultAlpha;
+
+
         @object.transform.position = _transformCubePosition.position;
 
-        @object.ReturnDefaultAlpha();
-
         @object.ChangeLifeTimer(randomTime);
+
+        @object.StartCorutins();
     }
 
     private void ReleaseObjectPool(Bomb bomb)
     {
         _pool.Release(bomb);
         bomb.Released -= ReleaseObjectPool;
+        bomb.Released -= Changer.GetDefaultAlpha;
     }
 }

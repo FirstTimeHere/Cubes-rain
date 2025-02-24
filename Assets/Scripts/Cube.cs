@@ -4,12 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class Cube : MonoBehaviour
+public class Cube : GeneralObject
 {
-    private float _lifeTimer;
-
-    private WaitForSeconds _wait;
-
     public event Action<Cube> Released;
     public event Action<Cube> TouchedPlatform;
 
@@ -19,26 +15,36 @@ public class Cube : MonoBehaviour
         {
             TouchedPlatform?.Invoke(this);
 
-            StartCoroutine(GetLifeTimer(_lifeTimer));
+            StartCorutine();
         }
     }
 
     private IEnumerator GetLifeTimer(float delay)
     {
-        _wait = new WaitForSeconds(delay);
+        Wait = new WaitForSeconds(delay);
 
-        while (_lifeTimer > 0)
+        while (LifeTimer > 0)
         {
-            _lifeTimer--;
+            LifeTimer--;
 
-            yield return _wait;
+            yield return Wait;
         }
 
+        StopCorutine(Coroutine);
         Released?.Invoke(this);
     }
 
-    public void ChangeLifeTimer(int time)
+    protected override void StartCorutine()
     {
-        _lifeTimer = time;
+        Coroutine = StartCoroutine(GetLifeTimer(WaitTime));
+    }
+
+    protected override void StopCorutine(Coroutine coroutine)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }
     }
 }

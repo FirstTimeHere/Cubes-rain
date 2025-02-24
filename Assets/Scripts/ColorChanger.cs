@@ -20,4 +20,15 @@ public class ColorChanger : MonoBehaviour
             mesh.material.color = Color.white;
         }
     }
+
+    public void GetDefaultAlpha(Bomb bomb)
+    {
+        if (bomb.TryGetComponent(out MeshRenderer mesh))
+        {
+            Color color = mesh.material.color;
+            color.a = 1f;
+            mesh.material.color = color;
+            bomb.Released -= GetDefaultAlpha;
+        }
+    }
 }

@@ -2,36 +2,38 @@ using System;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(ColorChanger))]
+
 public abstract class Spawner<T> : MonoBehaviour where T : Component
 {
     protected T Prefab;
 
+    public ColorChanger Changer { get; protected set; }
+
+
     public event Action<Spawner<T>> ChangedText;
 
-    [field :SerializeField] protected TextMeshProUGUI Text;
+    [field: SerializeField] protected TextMeshProUGUI Text;
 
-    public virtual int AllObjects { get; protected set; }
+    private int AllObjects { get; set; }
 
-    public virtual int ActiveObjects { get; protected set; }
+    public int ActiveObjects { get; protected set; }
 
-    public virtual int InstantiateObjects { get; protected set; }
+    public int InstantiateObjects { get; protected set; }
 
     protected virtual T Create()
     {
-        T @object = Instantiate(Prefab);
-
-        return @object;
+        return Instantiate(Prefab);
     }
 
-    public virtual void Spawn(T @object) { }
+    protected virtual void Spawn(T @object) { }
 
     public int GetRandomTime()
     {
         int minRandom = 2;
         int maxRandom = 6;
-        int randomTime = UnityEngine.Random.Range(minRandom, maxRandom);
 
-        return randomTime;
+        return UnityEngine.Random.Range(minRandom, maxRandom);
     }
 
     public void ShowCountAllObjects(int count)

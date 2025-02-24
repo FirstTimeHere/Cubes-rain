@@ -17,7 +17,7 @@ public class InfoText<T> where T : Component
 
     private void ShowText(Spawner<T> spawner)
     {
-        _text.text = $"Сколько раз вызван Instantiate: {spawner.AllObjects}\n" +
+        _text.text = "Сколько раз вызван Instantiate: {spawner.AllObjects}\n" +
            $"Всего объектов/вызовов GET: {spawner.InstantiateObjects}\n" +
            $"Активных объектов: {spawner.ActiveObjects}\n\n";
 

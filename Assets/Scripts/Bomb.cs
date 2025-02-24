@@ -2,15 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Bomb : MonoBehaviour
+public class Bomb : GeneralObject
 {
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
 
-    private int _lifeTimer;
     private int _lifeTimerForColor;
 
-    private WaitForSecondsRealtime _wait;
+    private Coroutine _corutineColor;
 
     private Material _material;
 
@@ -27,18 +26,18 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GetLifeTime(_lifeTimer));
+        StartCoroutine(GetLifeTime(WaitTime));
         StartCoroutine(GetAlphaChange());
     }
 
     private IEnumerator GetLifeTime(float delay)
     {
-        _wait = new WaitForSecondsRealtime(delay);
+        Wait = new WaitForSeconds(delay);
 
-        while (_lifeTimer > 0)
+        while (LifeTimer > 0)
         {
-            _lifeTimer--;
-            yield return _wait;
+            LifeTimer--;
+            yield return Wait;
         }
 
         Explode();
@@ -60,15 +59,31 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    public void ChangeLifeTimer(int time)
+    public override void ChangeLifeTimer(int time)
     {
-        _lifeTimer = time;
+        LifeTimer = time;
         _lifeTimerForColor = time;
     }
 
-    public void ReturnDefaultAlpha()
+    public void StartCorutins()
     {
-        _color.a = 1f;
+        StartCoroutine(GetLifeTime(WaitTime));
+        StartCoroutine(GetAlphaChange());
+    }
+
+    protected override void StartCorutine()
+    {
+        Coroutine = StartCoroutine(GetLifeTime(WaitTime));
+        _corutineColor=StartCoroutine(GetAlphaChange());
+    }
+
+    protected override void StopCorutine(Coroutine coroutine)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(Coroutine);
+            Coroutine = null;
+        }
     }
 
     private void Explode()
@@ -78,6 +93,8 @@ public class Bomb : MonoBehaviour
             hit.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
 
+        StopCorutine(Coroutine);
+        StopCorutine(_corutineColor);
         Released?.Invoke(this);
     }
 
