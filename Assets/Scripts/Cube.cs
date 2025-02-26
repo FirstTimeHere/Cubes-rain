@@ -44,7 +44,6 @@ public class Cube : GeneralObject
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
-            coroutine = null;
         }
     }
 }

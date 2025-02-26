@@ -6,6 +6,8 @@ using UnityEngine;
 
 public abstract class Spawner<T> : MonoBehaviour where T : Component
 {
+    [field: SerializeField] protected TextMeshProUGUI Text;
+
     protected T Prefab;
 
     public ColorChanger Changer { get; protected set; }
@@ -13,13 +15,12 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 
     public event Action<Spawner<T>> ChangedText;
 
-    [field: SerializeField] protected TextMeshProUGUI Text;
 
-    private int AllObjects { get; set; }
+    public int AllObjects { get; private set; }
 
-    public int ActiveObjects { get; protected set; }
+    public int ActiveObjects { get; private set; }
 
-    public int InstantiateObjects { get; protected set; }
+    public int InstantiateObjects { get; private set; }
 
     protected virtual T Create()
     {

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InfoBomb))]
+
 public class SpawnerBomb : Spawner<Bomb>
 {
     [SerializeField] private Bomb _bomb;
@@ -12,15 +14,13 @@ public class SpawnerBomb : Spawner<Bomb>
 
     private Transform _transformCubePosition;
 
-    private InfoText<Bomb> _info;
-
     private int _maxCountBomb = 15;
 
     private void Awake()
     {
-        _pool = new ObjectPool<Bomb>(_bomb, _maxCountBomb);
+        _ = new InfoBomb(this, Text);
 
-        _info = new InfoText<Bomb>(this, Text);
+        _pool = new ObjectPool<Bomb>(_bomb, _maxCountBomb);
 
         Changer = GetComponent<ColorChanger>();
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpawnerBomb))]
+[RequireComponent(typeof(InfoCube))]
 
 public class SpawnerCube : Spawner<Cube>
 {
@@ -17,17 +18,15 @@ public class SpawnerCube : Spawner<Cube>
 
     private WaitForSeconds _wait;
 
-    private InfoText<Cube> _info;
-
     public event System.Action<Cube> RelesedCube;
 
     private void Awake()
     {
+        _ = new InfoCube(this, Text);
+
         _wait = new WaitForSeconds(_waitTime);
 
         _pool = new ObjectPool<Cube>(_cube, _numbersOfCubes);
-
-        _info = new InfoText<Cube>(this, Text);
 
         Changer = GetComponent<ColorChanger>();
     }

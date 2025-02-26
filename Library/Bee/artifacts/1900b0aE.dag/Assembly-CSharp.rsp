@@ -356,6 +356,8 @@
 "Assets/Scripts/ColorChanger.cs"
 "Assets/Scripts/Cube.cs"
 "Assets/Scripts/GeneralObject.cs"
+"Assets/Scripts/InfoBomb.cs"
+"Assets/Scripts/InfoCUbe.cs"
 "Assets/Scripts/InfoText.cs"
 "Assets/Scripts/ObjectPool.cs"
 "Assets/Scripts/Platform.cs"
