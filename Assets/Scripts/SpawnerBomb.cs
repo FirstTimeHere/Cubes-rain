@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class SpawnerBomb : Spawner<Bomb>
 {
-    [SerializeField] private Bomb _bomb;
     [SerializeField] private SpawnerCube _spawnerCube;
 
     private ObjectPool<Bomb> _pool;
@@ -20,7 +19,7 @@ public class SpawnerBomb : Spawner<Bomb>
     {
         _ = new InfoBomb(this, Text);
 
-        _pool = new ObjectPool<Bomb>(_bomb, _maxCountBomb);
+        _pool = new ObjectPool<Bomb>(Prefab, _maxCountBomb);
 
         Changer = GetComponent<ColorChanger>();
     }

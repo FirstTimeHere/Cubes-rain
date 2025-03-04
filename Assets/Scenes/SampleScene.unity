@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1036,6 +1036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1998762766}
   - component: {fileID: 1998762767}
+  - component: {fileID: 1998762768}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -1073,6 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 0}
+  Prefab: {fileID: 0}
   _platforms:
   - {fileID: 33350215574506202, guid: 74c95de50c58b6745856053649c7fa68, type: 3}
   - {fileID: 2625398936669228455, guid: a8d8c0a5b50209140a87c18f8329953c, type: 3}
@@ -1086,6 +1088,18 @@ MonoBehaviour:
   _basePlatform: {fileID: 6429388793618599430, guid: bb88a9ab2275d34469b96034a61d3842, type: 3}
   _invisiblePlatform: {fileID: 1358416024293911103, guid: 0beab96d989304b41baf13c4f7ac1da9, type: 3}
   _spawnPointBasePlatform: {fileID: 295362702}
+--- !u!114 &1998762768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998762765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc949fc761b806d4db5cce5df1bf229f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029365448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1113,8 @@ GameObject:
   - component: {fileID: 2029365451}
   - component: {fileID: 2029365452}
   - component: {fileID: 2029365453}
+  - component: {fileID: 2029365455}
+  - component: {fileID: 2029365454}
   m_Layer: 0
   m_Name: SpawnCubes
   m_TagString: Untagged
@@ -1144,8 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1014412873}
-  _changer: {fileID: 0}
-  _cube: {fileID: 1738378164119006353, guid: 50ce413850a7e3041aed55e0442d158e, type: 3}
+  Prefab: {fileID: 1738378164119006353, guid: 50ce413850a7e3041aed55e0442d158e, type: 3}
   _waitTime: 0.1
   _numbersOfCubes: 30
   _spawnPoints:
@@ -1168,7 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 525809474}
-  _bomb: {fileID: 6781326656689881142, guid: 3875cb8bd72410a42a96799073badf59, type: 3}
+  Prefab: {fileID: 6781326656689881142, guid: 3875cb8bd72410a42a96799073badf59, type: 3}
   _spawnerCube: {fileID: 2029365450}
 --- !u!222 &2029365452
 CanvasRenderer:
@@ -1188,6 +1203,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc949fc761b806d4db5cce5df1bf229f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2029365454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029365448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fff7143481d3b14e8d806b2a3293d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2029365455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029365448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7884b77201dd3b042b4c82b22ba07088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2102880464

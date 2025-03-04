@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(Renderer))]
+
 public class Bomb : GeneralObject
 {
     [SerializeField] private float _explosionRadius;
@@ -26,7 +29,7 @@ public class Bomb : GeneralObject
 
     private void Start()
     {
-        StartCoroutine(GetLifeTime(WaitTime));
+        //StartCoroutine(GetLifeTime(WaitTime));
         StartCoroutine(GetAlphaChange());
     }
 
@@ -48,15 +51,17 @@ public class Bomb : GeneralObject
         float startAlpha = _material.color.a;
         float elapsedTime = 0f;
 
-        while (elapsedTime < _lifeTimerForColor)
+        while (elapsedTime < LifeTimer)
         {
-            float currentAlpha = Mathf.Lerp(startAlpha, 0f, elapsedTime / _lifeTimerForColor);
+            float currentAlpha = Mathf.Lerp(startAlpha, 0f, elapsedTime / LifeTimer);
             ChangeAlpha(currentAlpha);
 
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
+
+        Explode();
     }
 
     public override void ChangeLifeTimer(int time)
@@ -67,13 +72,13 @@ public class Bomb : GeneralObject
 
     public void StartCorutins()
     {
-        StartCoroutine(GetLifeTime(WaitTime));
+        //StartCoroutine(GetLifeTime(WaitTime));
         StartCoroutine(GetAlphaChange());
     }
 
     protected override void StartCorutine()
     {
-        Coroutine = StartCoroutine(GetLifeTime(WaitTime));
+        //Coroutine = StartCoroutine(GetLifeTime(WaitTime));
         _corutineColor=StartCoroutine(GetAlphaChange());
     }
 

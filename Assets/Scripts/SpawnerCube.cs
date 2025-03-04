@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class SpawnerCube : Spawner<Cube>
 {
-    [SerializeField] private Cube _cube;
-
     [SerializeField] private float _waitTime = 0.1f;
     [SerializeField, Range(0, 100)] private int _numbersOfCubes;
 
@@ -26,7 +24,7 @@ public class SpawnerCube : Spawner<Cube>
 
         _wait = new WaitForSeconds(_waitTime);
 
-        _pool = new ObjectPool<Cube>(_cube, _numbersOfCubes);
+        _pool = new ObjectPool<Cube>(Prefab, _numbersOfCubes);
 
         Changer = GetComponent<ColorChanger>();
     }

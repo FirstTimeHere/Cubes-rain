@@ -8,13 +8,11 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
 {
     [field: SerializeField] protected TextMeshProUGUI Text;
 
-    protected T Prefab;
-
-    public ColorChanger Changer { get; protected set; }
-
+    [field: SerializeField] protected T Prefab;
 
     public event Action<Spawner<T>> ChangedText;
 
+    public ColorChanger Changer { get; protected set; }
 
     public int AllObjects { get; private set; }
 
