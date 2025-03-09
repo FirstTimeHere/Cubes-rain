@@ -12,6 +12,8 @@ public class SpawnerCube : Spawner<Cube>
 
     [SerializeField] private List<Transform> _spawnPoints;
 
+    private int _getCubeCount = 0;
+
     private ObjectPool<Cube> _pool;
 
     private WaitForSeconds _wait;
@@ -31,15 +33,13 @@ public class SpawnerCube : Spawner<Cube>
 
     private void OnEnable()
     {
-        _pool.ChangedCountCreateObjects += ShowCountAllCreatedObjects;
-        _pool.ChangedCountAll += ShowCountAllObjects;
+        _pool.ChangedCountCreateObjects += ShowCountInstantiatedObjects;
         _pool.ChangedCountActive += ShowCountActiveObjects;
     }
 
     private void OnDisable()
     {
-        _pool.ChangedCountCreateObjects -= ShowCountAllCreatedObjects;
-        _pool.ChangedCountAll -= ShowCountAllObjects;
+        _pool.ChangedCountCreateObjects -= ShowCountInstantiatedObjects;
         _pool.ChangedCountActive -= ShowCountActiveObjects;
     }
 
@@ -54,6 +54,7 @@ public class SpawnerCube : Spawner<Cube>
         {
             var cube = _pool.GetObject();
             Spawn(cube);
+            ShowCountGetObjects();
 
             cube.Released += ReleaseObjectPool;
 

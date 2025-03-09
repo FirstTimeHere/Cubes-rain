@@ -15,8 +15,8 @@ public class InfoText<T> : MonoBehaviour where T : Component
 
     private void ShowText(Spawner<T> spawner)
     {
-        _text.text = $"Сколько раз вызван Instantiate: {spawner.AllObjects}\n" +
-           $"Всего объектов/вызовов GET: {spawner.InstantiateObjects}\n" +
+        _text.text = $"Сколько раз вызван Instantiate: {spawner.InstantiateObjects}\n" +
+           $"Всего объектов/вызовов GET: {spawner.AllObjects}\n" +
            $"Активных объектов: {spawner.ActiveObjects}\n\n";
 
         //spawner.ChangedText -= ShowText;

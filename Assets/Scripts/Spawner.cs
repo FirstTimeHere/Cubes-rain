@@ -35,9 +35,9 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
         return UnityEngine.Random.Range(minRandom, maxRandom);
     }
 
-    public void ShowCountAllObjects(int count)
+    public void ShowCountGetObjects()
     {
-        AllObjects = count;
+        AllObjects++;
         ChangedText?.Invoke(this);
     }
 
@@ -47,7 +47,7 @@ public abstract class Spawner<T> : MonoBehaviour where T : Component
         ChangedText?.Invoke(this);
     }
 
-    public void ShowCountAllCreatedObjects(int count)
+    public void ShowCountInstantiatedObjects(int count)
     {
         InstantiateObjects = count;
         ChangedText?.Invoke(this);

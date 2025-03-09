@@ -33,18 +33,18 @@ public class Bomb : GeneralObject
         StartCoroutine(GetAlphaChange());
     }
 
-    private IEnumerator GetLifeTime(float delay)
-    {
-        Wait = new WaitForSeconds(delay);
+    //private IEnumerator GetLifeTime(float delay)
+    //{
+    //    Wait = new WaitForSeconds(delay);
 
-        while (LifeTimer > 0)
-        {
-            LifeTimer--;
-            yield return Wait;
-        }
+    //    while (LifeTimer > 0)
+    //    {
+    //        LifeTimer--;
+    //        yield return Wait;
+    //    }
 
-        Explode();
-    }
+    //    Explode();
+    //}
 
     private IEnumerator GetAlphaChange()
     {

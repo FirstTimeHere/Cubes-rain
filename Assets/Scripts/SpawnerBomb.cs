@@ -28,18 +28,16 @@ public class SpawnerBomb : Spawner<Bomb>
     {
         _spawnerCube.RelesedCube += CreateBomb;
 
-        _pool.ChangedCountAll += ShowCountAllObjects;
         _pool.ChangedCountActive += ShowCountActiveObjects;
-        _pool.ChangedCountCreateObjects += ShowCountAllCreatedObjects;
+        _pool.ChangedCountCreateObjects += ShowCountInstantiatedObjects;
     }
 
     private void OnDisable()
     {
         _spawnerCube.RelesedCube -= CreateBomb;
 
-        _pool.ChangedCountAll -= ShowCountAllObjects;
         _pool.ChangedCountActive -= ShowCountActiveObjects;
-        _pool.ChangedCountCreateObjects -= ShowCountAllCreatedObjects;
+        _pool.ChangedCountCreateObjects -= ShowCountInstantiatedObjects;
     }
 
     private void CreateBomb(Cube cube)
@@ -47,6 +45,8 @@ public class SpawnerBomb : Spawner<Bomb>
         _transformCubePosition = cube.transform;
         var bomb = _pool.GetObject();
         Spawn(bomb);
+
+        ShowCountGetObjects();
 
         bomb.Released += ReleaseObjectPool;
     }
