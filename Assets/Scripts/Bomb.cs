@@ -10,19 +10,8 @@ public class Bomb : GeneralObject
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
 
-    private Material _material;
-
-    private Color _color;
 
     public event Action<Bomb> Released;
-
-    private void Awake()
-    {
-        _material = GetComponent<MeshRenderer>().material;
-
-        _color = _material.color;
-        _material.color = _color;
-    }
 
     private void Start()
     {
@@ -31,7 +20,8 @@ public class Bomb : GeneralObject
 
     private IEnumerator GetAlphaChange()
     {
-        float startAlpha = _material.color.a;
+        float startAlpha = Mesh.material.color.a;
+
         float elapsedTime = 0f;
 
         while (elapsedTime < LifeTimer)
@@ -79,8 +69,9 @@ public class Bomb : GeneralObject
 
     private void ChangeAlpha(float alpha)
     {
-        _color.a = alpha;
-        _material.color = _color;
+        Color color = Mesh.material.color;
+        color.a = alpha;
+        Mesh.material.color = color;
     }
 
     private List<Rigidbody> GetExlodableObjects()

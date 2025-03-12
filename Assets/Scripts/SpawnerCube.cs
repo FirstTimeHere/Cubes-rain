@@ -85,5 +85,7 @@ public class SpawnerCube : Spawner<Cube>
         cube.transform.position = tempSpawnPoint.position;
 
         cube.ChangeLifeTimer(randomTime);
+
+        cube.ChangeBoolForCube();
     }
 }

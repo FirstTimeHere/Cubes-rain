@@ -9,13 +9,19 @@ public class Cube : GeneralObject
     public event Action<Cube> Released;
     public event Action<Cube> TouchedPlatform;
 
+    private bool _isTouchedPlatform = true;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Platform platform))
+        if (_isTouchedPlatform)
         {
-            TouchedPlatform?.Invoke(this);
+            if (collision.collider.TryGetComponent(out Platform platform))
+            {
+                TouchedPlatform?.Invoke(this);
+                _isTouchedPlatform = false;
 
-            StartCorutine();
+                StartCorutine();
+            }
         }
     }
 
@@ -45,5 +51,10 @@ public class Cube : GeneralObject
         {
             StopCoroutine(coroutine);
         }
+    }
+
+    public void ChangeBoolForCube()
+    {
+        _isTouchedPlatform = true;
     }
 }
