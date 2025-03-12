@@ -9,7 +9,6 @@ public class ObjectPool<T> where T : Component
     private readonly UnityEngine.Pool.ObjectPool<T> _poolObject;
 
     private int _instantiateCount = 0;
-    private int _getCount = 0;
 
     public event Action<int> ChangedCountActive;
     public event Action<int> ChangedCountCreateObjects;

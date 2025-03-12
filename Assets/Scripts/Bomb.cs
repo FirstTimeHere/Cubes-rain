@@ -3,16 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(MeshRenderer))]
 
 public class Bomb : GeneralObject
 {
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
-
-    private int _lifeTimerForColor;
-
-    private Coroutine _corutineColor;
 
     private Material _material;
 
@@ -22,29 +18,16 @@ public class Bomb : GeneralObject
 
     private void Awake()
     {
-        _material = GetComponent<Renderer>().material;
+        _material = GetComponent<MeshRenderer>().material;
+
         _color = _material.color;
         _material.color = _color;
     }
 
     private void Start()
     {
-        //StartCoroutine(GetLifeTime(WaitTime));
         StartCoroutine(GetAlphaChange());
     }
-
-    //private IEnumerator GetLifeTime(float delay)
-    //{
-    //    Wait = new WaitForSeconds(delay);
-
-    //    while (LifeTimer > 0)
-    //    {
-    //        LifeTimer--;
-    //        yield return Wait;
-    //    }
-
-    //    Explode();
-    //}
 
     private IEnumerator GetAlphaChange()
     {
@@ -67,19 +50,11 @@ public class Bomb : GeneralObject
     public override void ChangeLifeTimer(int time)
     {
         LifeTimer = time;
-        _lifeTimerForColor = time;
     }
 
     public void StartCorutins()
     {
-        //StartCoroutine(GetLifeTime(WaitTime));
         StartCoroutine(GetAlphaChange());
-    }
-
-    protected override void StartCorutine()
-    {
-        //Coroutine = StartCoroutine(GetLifeTime(WaitTime));
-        _corutineColor=StartCoroutine(GetAlphaChange());
     }
 
     protected override void StopCorutine(Coroutine coroutine)
@@ -99,7 +74,6 @@ public class Bomb : GeneralObject
         }
 
         StopCorutine(Coroutine);
-        StopCorutine(_corutineColor);
         Released?.Invoke(this);
     }
 

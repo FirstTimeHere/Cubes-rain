@@ -12,8 +12,6 @@ public class SpawnerCube : Spawner<Cube>
 
     [SerializeField] private List<Transform> _spawnPoints;
 
-    private int _getCubeCount = 0;
-
     private ObjectPool<Cube> _pool;
 
     private WaitForSeconds _wait;
