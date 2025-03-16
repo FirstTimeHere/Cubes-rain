@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InfoBomb))]
@@ -9,19 +6,20 @@ public class SpawnerBomb : Spawner<Bomb>
 {
     [SerializeField] private SpawnerCube _spawnerCube;
 
-    private ObjectPool<Bomb> _pool;
+    private MyObjectPool<Bomb> _pool;
+    private InfoBomb _info;
 
     private Transform _transformCubePosition;
 
-    private int _maxCountBomb = 15;
+    private readonly int _maxCountBomb = 15;
+    private int _getObjectsCount = 0;
 
     private void Awake()
     {
-        _ = new InfoBomb(this, Text);
-
-        _pool = new ObjectPool<Bomb>(Prefab, _maxCountBomb);
-
+        _info = GetComponent<InfoBomb>();
         Changer = GetComponent<ColorChanger>();
+
+        _pool = new MyObjectPool<Bomb>(Prefab, _maxCountBomb);
     }
 
     private void OnEnable()
@@ -40,17 +38,6 @@ public class SpawnerBomb : Spawner<Bomb>
         _pool.ChangedCountCreateObjects -= ShowCountInstantiatedObjects;
     }
 
-    private void CreateBomb(Cube cube)
-    {
-        _transformCubePosition = cube.transform;
-        var bomb = _pool.GetObject();
-        Spawn(bomb);
-
-        ShowCountGetObjects();
-
-        bomb.Released += ReleaseObjectPool;
-    }
-
     protected override void Spawn(Bomb @object)
     {
         int randomTime = GetRandomTime();
@@ -63,6 +50,19 @@ public class SpawnerBomb : Spawner<Bomb>
         @object.ChangeLifeTimer(randomTime);
 
         @object.StartCorutins();
+
+        _info.ShowText(this);
+    }
+
+    private void CreateBomb(Cube cube)
+    {
+        _transformCubePosition = cube.transform;
+        var bomb = _pool.GetObject();
+        Spawn(bomb);
+
+        ShowCountGetObjects(_getObjectsCount++);
+
+        bomb.Released += ReleaseObjectPool;
     }
 
     private void ReleaseObjectPool(Bomb bomb)
@@ -70,5 +70,7 @@ public class SpawnerBomb : Spawner<Bomb>
         _pool.Release(bomb);
         bomb.Released -= ReleaseObjectPool;
         bomb.Released -= Changer.GetDefaultAlpha;
+
+        _info.ShowText(this);
     }
 }

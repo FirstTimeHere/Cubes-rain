@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class GeneralObject : MonoBehaviour
 {
     public WaitForSeconds Wait { get; protected set; }
@@ -9,7 +8,6 @@ public class GeneralObject : MonoBehaviour
     public Coroutine Coroutine { get; protected set; }
 
     public MeshRenderer Mesh { get; private set; }
-
 
     public int LifeTimer {  get; protected set; }
     public float WaitTime { get; private set; } = 1f;
@@ -19,11 +17,11 @@ public class GeneralObject : MonoBehaviour
         Mesh = GetComponent<MeshRenderer>();
     }
 
-    protected virtual void StartCorutine() { }
-    protected virtual void StopCorutine(Coroutine coroutine) { }
-
     public virtual void ChangeLifeTimer(int time)
     {
         LifeTimer = time;
     }
+
+    protected virtual void StartCorutine() { }
+    protected virtual void StopCorutine(Coroutine coroutine) { }
 }

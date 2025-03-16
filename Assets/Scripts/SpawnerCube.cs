@@ -12,19 +12,21 @@ public class SpawnerCube : Spawner<Cube>
 
     [SerializeField] private List<Transform> _spawnPoints;
 
-    private ObjectPool<Cube> _pool;
+    private MyObjectPool<Cube> _pool;
+    private InfoCube _info;
 
     private WaitForSeconds _wait;
+
+    private int _getObjectsCount = 0;
 
     public event System.Action<Cube> RelesedCube;
 
     private void Awake()
     {
-        _ = new InfoCube(this, Text);
-
+        _info = GetComponent<InfoCube>();
         _wait = new WaitForSeconds(_waitTime);
 
-        _pool = new ObjectPool<Cube>(Prefab, _numbersOfCubes);
+        _pool = new MyObjectPool<Cube>(Prefab, _numbersOfCubes);
 
         Changer = GetComponent<ColorChanger>();
     }
@@ -52,7 +54,7 @@ public class SpawnerCube : Spawner<Cube>
         {
             var cube = _pool.GetObject();
             Spawn(cube);
-            ShowCountGetObjects();
+            ShowCountGetObjects(_getObjectsCount++);
 
             cube.Released += ReleaseObjectPool;
 
@@ -60,19 +62,10 @@ public class SpawnerCube : Spawner<Cube>
 
             cube.TouchedPlatform += Changer.GetNewColorCube;
 
+            _info.ShowText(this);
+
             yield return _wait;
         }
-    }
-
-    private void ReleaseObjectPool(Cube cube)
-    {
-        _pool.Release(cube);
-
-        cube.Released -= Changer.GetDefaultColor;
-        cube.Released -= ReleaseObjectPool;
-        cube.TouchedPlatform -= Changer.GetNewColorCube;
-
-        RelesedCube?.Invoke(cube);
     }
 
     protected override void Spawn(Cube cube)
@@ -87,5 +80,18 @@ public class SpawnerCube : Spawner<Cube>
         cube.ChangeLifeTimer(randomTime);
 
         cube.ChangeBoolForCube();
+    }
+
+    private void ReleaseObjectPool(Cube cube)
+    {
+        _pool.Release(cube);
+
+        cube.Released -= Changer.GetDefaultColor;
+        cube.Released -= ReleaseObjectPool;
+        cube.TouchedPlatform -= Changer.GetNewColorCube;
+
+        _info.ShowText(this);
+
+        RelesedCube?.Invoke(cube);
     }
 }

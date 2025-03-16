@@ -359,7 +359,7 @@
 "Assets/Scripts/InfoBomb.cs"
 "Assets/Scripts/InfoCube.cs"
 "Assets/Scripts/InfoText.cs"
-"Assets/Scripts/ObjectPool.cs"
+"Assets/Scripts/MyObjectPool.cs"
 "Assets/Scripts/Platform.cs"
 "Assets/Scripts/Spawner.cs"
 "Assets/Scripts/SpawnerBomb.cs"

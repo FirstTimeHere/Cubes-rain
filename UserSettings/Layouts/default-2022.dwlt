@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -460,9 +460,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 905a0000
-      m_LastClickedID: 23184
-      m_ExpandedIDs: 30fbffff
+      m_SelectedIDs: 10d3ffff
+      m_LastClickedID: -11504
+      m_ExpandedIDs: 30fbffff6a5a0000905a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -525,7 +525,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: -166, y: -26}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: -5, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -894,9 +894,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.0710764, y: 0.49999887, z: 19.004221}
+    m_Target: {x: 9.938781, y: 0.49999997, z: 12.527138}
     speed: 2
-    m_Value: {x: 6.0710764, y: 0.49999887, z: 19.004221}
+    m_Value: {x: 9.667947, y: 0.49999997, z: 12.490655}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 0.8660254
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 1.1859283
   m_Ortho:
     m_Target: 0
     speed: 2

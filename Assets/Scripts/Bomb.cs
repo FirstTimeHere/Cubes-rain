@@ -10,7 +10,6 @@ public class Bomb : GeneralObject
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
 
-
     public event Action<Bomb> Released;
 
     private void Start()

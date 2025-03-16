@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1073,7 +1073,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7a70a35324471418697dd1e654ef79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 0}
   Prefab: {fileID: 0}
   _platforms:
   - {fileID: 33350215574506202, guid: 74c95de50c58b6745856053649c7fa68, type: 3}
@@ -1159,7 +1158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64915deb28462204291f538645d88072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 1014412873}
   Prefab: {fileID: 1738378164119006353, guid: 50ce413850a7e3041aed55e0442d158e, type: 3}
   _waitTime: 0.1
   _numbersOfCubes: 30
@@ -1182,7 +1180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45998ebf14d0f244c8f4b43d8b4ee5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 525809474}
   Prefab: {fileID: 6781326656689881142, guid: 3875cb8bd72410a42a96799073badf59, type: 3}
   _spawnerCube: {fileID: 2029365450}
 --- !u!222 &2029365452
@@ -1217,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fff7143481d3b14e8d806b2a3293d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _text: {fileID: 525809474}
 --- !u!114 &2029365455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7884b77201dd3b042b4c82b22ba07088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _text: {fileID: 1014412873}
 --- !u!1 &2102880464
 GameObject:
   m_ObjectHideFlags: 0

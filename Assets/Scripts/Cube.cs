@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class Cube : GeneralObject
 {
+    private bool _isTouchedPlatform = true;
+
     public event Action<Cube> Released;
     public event Action<Cube> TouchedPlatform;
-
-    private bool _isTouchedPlatform = true;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -40,6 +40,11 @@ public class Cube : GeneralObject
         Released?.Invoke(this);
     }
 
+    public void ChangeBoolForCube()
+    {
+        _isTouchedPlatform = true;
+    }
+
     protected override void StartCorutine()
     {
         Coroutine = StartCoroutine(GetLifeTimer(WaitTime));
@@ -51,10 +56,5 @@ public class Cube : GeneralObject
         {
             StopCoroutine(coroutine);
         }
-    }
-
-    public void ChangeBoolForCube()
-    {
-        _isTouchedPlatform = true;
     }
 }
